@@ -1,0 +1,52 @@
+def dot_product(v1, v2, ps):
+    # Check if the vectors have the same length
+    if len(v1) != len(v2):
+        raise ValueError("Vectors must have the same length")
+
+    # Initialize the dot product to zero
+    ps[0] = 0
+
+    # Calculate the dot product
+    for i in range(len(v1)):
+        ps[0] += v1[i] * v2[i]
+
+# Function to determine if two vectors are orthogonal using the dot_product procedure
+def are_vectors_orthogonal(v1, v2):
+    dot_result = [0]  # Initialize a list to store the result
+    dot_product(v1, v2, dot_result)
+    return dot_result[0] == 0
+
+# Function to check n pairs of vectors for orthogonality using the dot_product procedure
+def check_orthogonality_procedure(n, vector_pairs):
+    results = []  # To store the results for each pair
+
+    for i in range(n):
+        v1, v2 = vector_pairs[i]
+        is_orthogonal = are_vectors_orthogonal(v1, v2)
+        results.append(is_orthogonal)
+
+    return results
+
+# Function to check n pairs of vectors for orthogonality using the dot_product function
+def check_orthogonality_function(n, vector_pairs):
+    results = []  # To store the results for each pair
+
+    for i in range(n):
+        v1, v2 = vector_pairs[i]
+        dot_result = dot_product(v1, v2)  # Use the dot_product function
+        is_orthogonal = dot_result == 0
+        results.append(is_orthogonal)
+
+    return results
+
+# Example usage:
+n = 3  # Number of pairs of vectors
+vector_pairs = [([1, 0], [0, 1]), ([2, 2], [-1, 1]), ([3, 4], [4, -3])]
+
+# Using the dot_product procedure
+orthogonal_results_procedure = check_orthogonality_procedure(n, vector_pairs)
+print("Orthogonal results using procedure:", orthogonal_results_procedure)
+
+# Using the dot_product function
+orthogonal_results_function = check_orthogonality_function(n, vector_pairs)
+print("Orthogonal results using function:", orthogonal_results_function)

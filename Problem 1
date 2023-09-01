@@ -1,0 +1,25 @@
+def sum_of_distinct_elements(set1, set2):
+    # Initialize sum to store the sum of distinct elements
+    sum = 0
+    
+    # Iterate through each element in set1
+    for element in set1:
+        # Check if the element is not in set2
+        if element not in set2:
+            # Add the element to the sum
+            sum += element
+    
+    # Iterate through each element in set2
+    for element in set2:
+        # Check if the element is not in set1
+        if element not in set1:
+            # Add the element to the sum
+            sum += element
+    
+    return sum
+
+# Example usage
+set1 = [3, 1, 7, 9]
+set2 = [2, 4, 1, 9, 3]
+result = sum_of_distinct_elements(set1, set2)
+print("Output:", result)  # Output: 13
